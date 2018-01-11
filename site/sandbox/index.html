@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+table.target { border: #8888FF 3pt solid; padding: 5pt; margin: 10pt; }
+td.unselected { background-color: #88FF88; height: 100px; width: 100px; }
+td.selected { background-color: #FF8888; height: 100px; width: 100px; }
+  </style>
+  <script>
+
+function selectCell(event){
+//  alert(event.target.id)
+  var current = document.getElementsByClassName("selected")[0]
+  if (current != undefined){
+    current.className = "unselected"
+  }
+  event.target.className = "selected";
+}
+  </script>
+</head>
+<body>
+<p id="response"></p>
+<form id="testForm">
+Message: <input type="text" value="Enter message here" name="message" ></input>
+<a href="javascript:submitForm()" >Submit</a></input>
+  <a href="javascript:alert('hello')">Alert</a>
+</form>
+<script>
+function submitForm(){
+   document.getElementById("response").textContent = document.getElementById("testForm").elements["message"].value
+}
+</script>
+<table class="target" id="targetTable" >
+  <tbody>
+  <tr><td id="c0x0" class="unselected" onClick="javascript:selectCell(event)"></td><td id="c0x1" class="unselected"></td><td id="c0x2" class="unselected"></td></tr>
+  <tr><td id="c1x0" class="unselected"></td><td id="c1x1" class="unselected"></td><td id="c1x2" class="unselected"></td></tr>
+  <tr><td id="c2x0" class="unselected"></td><td id="c2x1" class="unselected"></td><td id="c2x2" class="unselected"></td></tr>
+</tbody>
+</table>
+<script>
+window.onload = function(event) {
+  event.target.className = "selected";
+  var cells = document.getElementsByClassName("unselected");
+  for (let cell of cells){
+    cell.onclick = selectCell;
+    }
+  }
+
+</script>
+</body>
+</html>
