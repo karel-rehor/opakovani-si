@@ -1,0 +1,5 @@
+/target/*
+.idea/*
+*.old
+*.rucne
+notes-on-pom.txt
